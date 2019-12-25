@@ -16,17 +16,22 @@ from zigpy.zcl.clusters.lightlink import LightLink
 from . import MANUFACTURER, LightLinkCluster
 from ..const import (
     ARGS,
+    BUTTON_1,
+    BUTTON_2,
+    BUTTON_3,
+    BUTTON_4,
     CLUSTER_ID,
     COMMAND,
     COMMAND_MOVE,
     COMMAND_MOVE_ON_OFF,
+    COMMAND_MOVE_TO_COLOR_TEMP,
+    COMMAND_MOVE_TO_LEVEL_WITH_ON_OFF,
+    COMMAND_MOVE_TO_LEVEL,
     COMMAND_RELEASE,
     COMMAND_STEP,
     COMMAND_STEP_ON_OFF,
     COMMAND_TOGGLE,
     DEVICE_TYPE,
-    DIM_DOWN,
-    DIM_UP,
     ENDPOINT_ID,
     ENDPOINTS,
     INPUT_CLUSTERS,
@@ -35,7 +40,6 @@ from ..const import (
     OUTPUT_CLUSTERS,
     PROFILE_ID,
     SHORT_PRESS,
-    TURN_ON,
 )
 
 
@@ -97,39 +101,26 @@ class CCTSwitch(CustomDevice):
     }
 
     device_automation_triggers = {
-        (SHORT_PRESS, TURN_ON): {
-            COMMAND: COMMAND_TOGGLE,
+        (SHORT_PRESS, BUTTON_1): {
             CLUSTER_ID: 6,
             ENDPOINT_ID: 1,
         },
-        (LONG_PRESS, TURN_ON): {
-            COMMAND: COMMAND_RELEASE,
-            CLUSTER_ID: 5,
-            ENDPOINT_ID: 1,
-            ARGS: [],
-        },
-        (SHORT_PRESS, DIM_UP): {
-            COMMAND: COMMAND_STEP_ON_OFF,
+        (SHORT_PRESS, BUTTON_2): {
+            COMMAND: COMMAND_MOVE_TO_LEVEL,
             CLUSTER_ID: 8,
             ENDPOINT_ID: 1,
-            ARGS: [0, 43, 5],
         },
-        (LONG_PRESS, DIM_UP): {
-            COMMAND: COMMAND_MOVE_ON_OFF,
-            CLUSTER_ID: 8,
-            ENDPOINT_ID: 1,
-            ARGS: [0, 83],
-        },
-        (SHORT_PRESS, DIM_DOWN): {
-            COMMAND: COMMAND_STEP,
-            CLUSTER_ID: 8,
-            ENDPOINT_ID: 1,
-            ARGS: [1, 43, 5],
-        },
-        (LONG_PRESS, DIM_DOWN): {
+        (LONG_PRESS, BUTTON_2): {
             COMMAND: COMMAND_MOVE,
             CLUSTER_ID: 8,
             ENDPOINT_ID: 1,
-            ARGS: [1, 83],
+        },
+        (SHORT_PRESS, BUTTON_3): {
+            COMMAND: COMMAND_MOVE_TO_COLOR_TEMP,
+            CLUSTER_ID: 768,
+            ENDPOINT_ID: 1,
+        },
+        (SHORT_PRESS, BUTTON_4): {
+            COMMAND: COMMAND_MOVE_TO_LEVEL_WITH_ON_OFF
         },
     }
