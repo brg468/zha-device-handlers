@@ -22,12 +22,10 @@ from ..const import (
     BUTTON_4,
     CLUSTER_ID,
     COMMAND,
-    COMMAND_ON,
-    COMMAND_OFF,
     COMMAND_MOVE,
     COMMAND_MOVE_ON_OFF,
     COMMAND_MOVE_TO_COLOR_TEMP,
-    COMMAND_MOVE_TO_LEVEL_ON_OFF,
+    COMMAND_MOVE_TO_LEVEL_WITH_ON_OFF,
     COMMAND_MOVE_TO_LEVEL,
     COMMAND_RELEASE,
     COMMAND_STEP,
@@ -123,6 +121,6 @@ class CCTSwitch(CustomDevice):
             ENDPOINT_ID: 1,
         },
         (SHORT_PRESS, BUTTON_4): {
-            COMMAND: COMMAND_MOVE_TO_LEVEL_ON_OFF
+            COMMAND: COMMAND_MOVE_TO_LEVEL_WITH_ON_OFF
         },
     }
