@@ -22,6 +22,8 @@ from ..const import (
     BUTTON_4,
     CLUSTER_ID,
     COMMAND,
+    COMMAND_ON,
+    COMMAND_OFF,
     COMMAND_MOVE,
     COMMAND_MOVE_ON_OFF,
     COMMAND_MOVE_TO_COLOR_TEMP,
